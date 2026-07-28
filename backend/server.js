@@ -49,16 +49,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "http://127.0.0.1:5173",
+      "https://campus-pilot-ai-kappa.vercel.app",
     ],
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );

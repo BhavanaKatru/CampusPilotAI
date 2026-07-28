@@ -1,0 +1,41 @@
+CampusPilot AI Dashboard
+
+Top Section
+
+- Welcome Message
+- Current Streak
+- Today's Goal
+
+Quick Stats
+
+- Attendance %
+- Pending Assignments
+- Quiz Score
+- Study Hours
+
+Today's Plan
+
+- AI Generated Study Schedule
+
+Quick Actions
+
+- Generate Quiz
+- Ask AI Doubt
+- Upload PDF
+- Career Guidance
+
+Recent Activity
+
+- Last Quiz
+- Last PDF Analyzed
+- Last Doubt Asked
+
+Progress Overview
+
+- Study Hours Graph
+- Attendance Graph
+- Quiz Performance Graph
+
+AI Assistant Button
+
+- Floating AI Assistant available on every page

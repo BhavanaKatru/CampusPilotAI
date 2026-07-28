@@ -13,8 +13,10 @@ import {
 
 import DashboardLayout from "../layouts/DashboardLayout";
 
-const API_URL =
+const BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+const API_URL = `${BASE_URL}/api/assignments`;
 const initialForm = {
   title: "",
   subject: "",

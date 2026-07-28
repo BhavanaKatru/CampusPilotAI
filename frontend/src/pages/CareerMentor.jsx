@@ -622,7 +622,7 @@ const readinessMessage =
     setCareerPlanError("");
 
     const response = await fetch(
-      "http://localhost:5000/api/career-mentor/generate",
+     `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/career-mentor/generate`,
       {
         method: "POST",
         headers: {

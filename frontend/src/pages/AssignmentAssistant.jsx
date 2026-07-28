@@ -13,8 +13,8 @@ import {
 
 import DashboardLayout from "../layouts/DashboardLayout";
 
-const API_URL = "http://localhost:5000/api/assignments";
-
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 const initialForm = {
   title: "",
   subject: "",
@@ -87,7 +87,7 @@ const [sortBy, setSortBy] = useState("Newest");
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/assignment-plan",
+      `${API_URL}/api/assignment-plan`,
       {
         method: "POST",
         headers: {
@@ -205,7 +205,7 @@ const [sortBy, setSortBy] = useState("Newest");
 ) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/assignments/${assignmentId}/milestones/${milestoneId}/toggle`,
+     `${API_URL}/api/assignments/${assignmentId}/milestones/${milestoneId}/toggle`,
       {
         method: "PATCH",
       }

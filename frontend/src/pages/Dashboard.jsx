@@ -58,7 +58,7 @@ const savedQuizAverage = Number(
 ) || 0;
       // Assignments
       const assignmentRes = await fetch(
-        "http://localhost:5000/api/assignments"
+       `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/assignments`
       );
       const assignments = await assignmentRes.json();
 

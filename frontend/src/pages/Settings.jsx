@@ -4,13 +4,16 @@ import {
   Bot,
   Check,
   Lock,
+  Moon,
+  Palette,
   RotateCcw,
   Save,
   Settings as SettingsIcon,
   Shield,
+  Sun,
   Volume2,
 } from "lucide-react";
-
+import { useTheme } from "../context/ThemeContext";
 const defaultSettings = {
  
   answerStyle: "Simple",
@@ -26,6 +29,15 @@ const defaultSettings = {
 const Settings = () => {
   const [settings, setSettings] = useState(defaultSettings);
   const [saved, setSaved] = useState(false);
+    const {
+    theme,
+    setLightTheme,
+    setDarkTheme,
+  } = useTheme();
+
+ 
+
+  const isLight = theme === "light";
 
   useEffect(() => {
     const storedSettings = localStorage.getItem("campusPilotSettings");
@@ -117,7 +129,85 @@ const Settings = () => {
             Settings saved successfully.
           </div>
         )}
+<section className="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+  <div className="mb-5 flex items-center gap-3">
+    <div className="rounded-lg bg-indigo-100 p-2 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
+      <Palette size={20} />
+    </div>
 
+    <div>
+      <h2 className="font-semibold text-slate-900 dark:text-white">
+        Appearance
+      </h2>
+
+      <p className="text-sm text-slate-500 dark:text-slate-400">
+        Choose a pleasant light theme or a comfortable dark theme.
+      </p>
+    </div>
+  </div>
+
+  <div className="grid gap-4 sm:grid-cols-2">
+    <button
+      type="button"
+      onClick={setLightTheme}
+      className={`rounded-2xl border p-5 text-left transition ${
+        isLight
+          ? "border-indigo-500 bg-indigo-50 ring-4 ring-indigo-500/10"
+          : "border-slate-200 bg-slate-50 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-800"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="rounded-xl bg-amber-100 p-3 text-amber-600">
+          <Sun size={24} />
+        </div>
+
+        {isLight && (
+          <span className="rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">
+            Active
+          </span>
+        )}
+      </div>
+
+      <h3 className="mt-4 font-semibold text-slate-900 dark:text-white">
+        Light Mode
+      </h3>
+
+      <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Soft backgrounds and bright cards for a pleasant student experience.
+      </p>
+    </button>
+
+    <button
+      type="button"
+      onClick={setDarkTheme}
+      className={`rounded-2xl border p-5 text-left transition ${
+        !isLight
+          ? "border-indigo-400 bg-indigo-500/10 ring-4 ring-indigo-500/10"
+          : "border-slate-200 bg-slate-50 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-800"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="rounded-xl bg-slate-800 p-3 text-white">
+          <Moon size={24} />
+        </div>
+
+        {!isLight && (
+          <span className="rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">
+            Active
+          </span>
+        )}
+      </div>
+
+      <h3 className="mt-4 font-semibold text-slate-900 dark:text-white">
+        Dark Mode
+      </h3>
+
+      <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Reduced brightness and deeper colors for night-time study.
+      </p>
+    </button>
+  </div>
+</section>
         <div className="grid gap-6 lg:grid-cols-2">
           {/* AI Preferences */}
 

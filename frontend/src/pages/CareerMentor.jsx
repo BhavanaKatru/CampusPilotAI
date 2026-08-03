@@ -14,6 +14,7 @@ import {
   Sparkles,
   Laptop,
 } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 const STORAGE_KEY = "campuspilot-career-mentor";
 
@@ -494,6 +495,7 @@ const defaultProfile = {
 };
 
 export default function CareerMentor() {
+  const { isDark } = useTheme();
   const [profile, setProfile] = useState(defaultProfile);
 
   const [completedSkills, setCompletedSkills] = useState([]);
@@ -685,30 +687,54 @@ const readinessMessage =
 
   return (
   
-  <div className="min-h-screen bg-slate-950 text-white">
-    <div className="max-w-7xl mx-auto p-6">
+  <div
+  className={`min-h-screen transition-colors duration-300 ${
+    isDark
+      ? "bg-slate-950 text-white"
+      : "bg-slate-100 text-slate-900"
+  }`}
+>
+    <div className="mx-auto max-w-7xl p-6">
 
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-cyan-400">
+      <h1
+  className={`text-4xl font-bold ${
+    isDark ? "text-cyan-400" : "text-cyan-600"
+  }`}
+>
           Career Mentor
         </h1>
 
-        <p className="mt-2 text-slate-400">
+       <p
+  className={`mt-2 ${
+    isDark ? "text-slate-400" : "text-slate-600"
+  }`}
+>
           Build your career with AI guidance.
         </p>
       </div>
 
-      <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
-
-        <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
-          <User className="text-cyan-400" />
+     <div
+  className={`rounded-3xl border p-6 transition-all duration-300 ${
+    isDark
+      ? "border-slate-800 bg-slate-900"
+      : "border-slate-200 bg-white shadow-sm"
+  }`}
+>
+       <h2
+  className={`mb-6 flex items-center gap-2 text-2xl font-bold ${
+    isDark ? "text-white" : "text-slate-900"
+  }`}
+> <User className="text-cyan-400" />
           Student Profile
         </h2>
 
         <div className="grid gap-5 md:grid-cols-2">
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className= {`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Full Name
             </label>
 
@@ -718,12 +744,17 @@ const readinessMessage =
               value={profile.fullName}
               onChange={updateProfile}
               placeholder="Enter your full name"
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+           className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`}     />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Branch
             </label>
 
@@ -733,12 +764,17 @@ const readinessMessage =
               value={profile.branch}
               onChange={updateProfile}
               placeholder="CSE / IT / ECE"
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+            className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`}   />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Current Year
             </label>
 
@@ -748,12 +784,17 @@ const readinessMessage =
               value={profile.year}
               onChange={updateProfile}
               placeholder="1st Year"
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+             className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`}     />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               CGPA
             </label>
 
@@ -763,12 +804,17 @@ const readinessMessage =
               value={profile.cgpa}
               onChange={updateProfile}
               placeholder="8.5"
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+             className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`}   />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Skills
             </label>
 
@@ -778,12 +824,17 @@ const readinessMessage =
               value={profile.skills}
               onChange={updateProfile}
               placeholder="React, Python..."
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+             className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`}  />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Interests
             </label>
 
@@ -793,12 +844,17 @@ const readinessMessage =
               value={profile.interests}
               onChange={updateProfile}
               placeholder="AI, Web Development"
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+             className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`} />
           </div>
 
           <div className="md:col-span-2">
-            <label className="mb-2 block text-sm text-slate-400">
+            <label className={`mb-2 block text-sm ${
+  isDark ? "text-slate-400" : "text-slate-600"
+}`}>
               Dream Company
             </label>
 
@@ -808,8 +864,11 @@ const readinessMessage =
               value={profile.dreamCompany}
               onChange={updateProfile}
               placeholder="Google, Microsoft..."
-              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-            />
+             className={`w-full rounded-xl border p-3 outline-none transition ${
+  isDark
+    ? "border-slate-700 bg-slate-800 text-white placeholder:text-slate-500 focus:border-cyan-400"
+    : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:bg-white"
+}`} />
           </div>
 
         </div>
@@ -819,10 +878,10 @@ const readinessMessage =
     </div>
     <div className="mt-8 grid gap-6 lg:grid-cols-2">
 
-  <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
-    <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+<div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+  <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
       <Target className="text-cyan-400" />
-      <p className="text-sm text-slate-400">
+     <p className="text-sm text-slate-600 dark:text-slate-400">
 Career Goal
 </p>
 
@@ -839,28 +898,31 @@ Career Goal
       name="careerGoal"
       value={profile.careerGoal}
       onChange={updateProfile}
-      className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 outline-none focus:border-cyan-400"
-    >
+     className="w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-lg text-slate-900 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10">
       {careerOptions.map((career) => (
-        <option key={career} value={career}>
-          {career}
-        </option>
-      ))}
+  <option
+    key={career}
+    value={career}
+    className="bg-white text-slate-900 dark:bg-slate-800 dark:text-white"
+  >
+    {career}
+  </option>
+))}
     </select>
 
-    <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-5">
-      <p className="text-sm text-slate-400">
+    <div className="mt-6 rounded-2xl border border-cyan-200 bg-cyan-50 p-5 dark:border-cyan-500/20 dark:bg-cyan-500/10">
+     <p className="text-sm text-slate-600 dark:text-slate-400">
         Selected Career
       </p>
 
-      <h3 className="mt-1 text-xl font-semibold text-cyan-300">
+      <h3 className="mt-1 text-xl font-semibold text-cyan-700 dark:text-cyan-300">
         {profile.careerGoal}
       </h3>
     </div>
   </div>
 
-  <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
-    <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+<div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+  <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
       <Sparkles className="text-yellow-400" />
       AI Career Roadmap
     </h2>
@@ -874,8 +936,7 @@ Career Goal
         {roadmap?.technologies?.map((tech) => (
           <span
             key={tech}
-            className="rounded-full bg-slate-800 px-3 py-2 text-sm"
-          >
+           className="rounded-full bg-slate-100 px-3 py-2 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-200"  >
             {tech}
           </span>
         ))}
@@ -891,7 +952,7 @@ Career Goal
         {roadmap?.certifications?.map((certificate) => (
           <div
             key={certificate}
-            className="rounded-xl bg-slate-800 p-3"
+            className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           >
             {certificate}
           </div>
@@ -908,7 +969,7 @@ Career Goal
         {roadmap?.projects?.map((project) => (
           <div
             key={project}
-            className="rounded-xl bg-slate-800 p-3"
+          className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           >
             {project}
           </div>
@@ -916,62 +977,84 @@ Career Goal
       </div>
     </div>
   </div>
-<div className="col-span-full mt-8 w-full rounded-3xl border border-slate-800 bg-slate-900 p-6">
-  <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
-    <BookOpen className="text-cyan-400" />
-    Learning Resources
-  </h2>
+<div className="col-span-full mt-8 w-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-slate-800 dark:bg-slate-900">
+  <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h2 className="flex items-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
+        <BookOpen className="text-cyan-500 dark:text-cyan-400" />
+        Learning Resources
+      </h2>
+
+      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Recommended platforms for learning and skill improvement.
+      </p>
+    </div>
+
+    <span className="inline-flex w-fit items-center rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-300">
+      {learningResourcesData[profile.careerGoal]?.length || 0} Resources
+    </span>
+  </div>
 
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    {(learningResourcesData[profile.careerGoal] || []).map((resource) => (
-      <a
-        key={resource.title}
-        href={resource.url}
-        target="_blank"
-        rel="noreferrer"
-        className="group rounded-2xl border border-slate-800 bg-slate-800 p-4 transition hover:-translate-y-1 hover:border-cyan-400 hover:bg-slate-700"
-      >
-        <div className="flex items-center justify-between">
-          <Laptop className="text-cyan-400" />
+    {(learningResourcesData[profile.careerGoal] || []).map(
+      (resource) => (
+        <a
+          key={resource.title}
+          href={resource.url}
+          target="_blank"
+          rel="noreferrer"
+          className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:bg-white hover:shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:border-cyan-500/50 dark:hover:bg-slate-700"
+        >
+          <div className="flex items-center justify-between">
+            <div className="rounded-xl bg-cyan-100 p-3 text-cyan-600 transition group-hover:scale-105 dark:bg-cyan-500/10 dark:text-cyan-400">
+              <Laptop size={22} />
+            </div>
 
-          <ExternalLink
-            size={18}
-            className="text-slate-400 group-hover:text-cyan-300"
-          />
-        </div>
+            <ExternalLink
+              size={18}
+              className="text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-600 dark:text-slate-500 dark:group-hover:text-cyan-300"
+            />
+          </div>
 
-        <h3 className="mt-4 text-lg font-semibold">
-          {resource.title}
-        </h3>
+          <h3 className="mt-5 text-lg font-semibold text-slate-900 dark:text-white">
+            {resource.title}
+          </h3>
 
-        <p className="mt-1 text-sm text-slate-400">
-          Open learning platform
-        </p>
-      </a>
-    ))}
-     
+          <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+            Open learning platform
+          </p>
+
+          <div className="mt-4 flex items-center gap-2 text-sm font-medium text-cyan-600 dark:text-cyan-300">
+            Open Resource
+            <ExternalLink size={15} />
+          </div>
+        </a>
+      )
+    )}
+
 </div>
   </div>
 
-   <div className="col-span-full mt-8 w-full rounded-3xl border border-slate-800 bg-slate-900 p-6">
-  <div className="mb-5 flex items-center justify-between">
+ <div className="col-span-full mt-8 w-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-slate-800 dark:bg-slate-900">
+  <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <div>
-      <h2 className="text-xl font-semibold text-white">
+      <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
         Skill Progress Tracker
       </h2>
-      <p className="mt-1 text-sm text-slate-400">
+
+      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
         Track skills required for {profile.careerGoal}
       </p>
     </div>
 
-    <div className="rounded-full bg-violet-500/10 px-4 py-2 text-sm font-semibold text-violet-400">
+    <div className="w-fit rounded-full bg-violet-100 px-4 py-2 text-sm font-semibold text-violet-700 dark:bg-violet-500/10 dark:text-violet-400">
       {progress}%
     </div>
   </div>
 
-  <div className="mb-6 h-3 overflow-hidden rounded-full bg-slate-800">
+  <div className="mb-6 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
     <div
-      className="h-full rounded-full bg-violet-500 transition-all duration-500"
+      className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-all duration-500"
       style={{ width: `${progress}%` }}
     />
   </div>
@@ -985,23 +1068,23 @@ Career Goal
           key={skill}
           type="button"
           onClick={() => toggleSkill(skill)}
-          className={`flex items-center gap-3 rounded-2xl border p-4 text-left transition ${
+          className={`flex items-center gap-3 rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${
             isCompleted
-              ? "border-emerald-500/40 bg-emerald-500/10"
-              : "border-slate-800 bg-slate-950 hover:border-violet-500/50"
+              ? "border-emerald-300 bg-emerald-50 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10"
+              : "border-slate-200 bg-slate-50 hover:border-violet-400 hover:bg-white hover:shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:hover:border-violet-500/50 dark:hover:bg-slate-900"
           }`}
         >
           {isCompleted ? (
-            <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+            <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
           ) : (
-            <Circle className="h-5 w-5 text-slate-500" />
+            <Circle className="h-5 w-5 shrink-0 text-slate-400 dark:text-slate-500" />
           )}
 
           <span
             className={
               isCompleted
-                ? "font-medium text-emerald-300"
-                : "font-medium text-slate-200"
+                ? "font-medium text-emerald-700 dark:text-emerald-300"
+                : "font-medium text-slate-700 dark:text-slate-200"
             }
           >
             {skill}
@@ -1009,55 +1092,63 @@ Career Goal
         </button>
       );
     })}
-    </div>
+  </div>
 </div>
-<div className="col-span-full mt-8 w-full rounded-3xl border border-slate-800 bg-slate-900 p-4 sm:p-6">
- <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+<div className="col-span-full mt-8 w-full rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+  <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
     <div>
       <div className="flex items-center gap-3">
-        <TrendingUp className="h-6 w-6 text-violet-400" />
+        <div className="rounded-xl bg-violet-100 p-2 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+          <TrendingUp className="h-6 w-6" />
+        </div>
 
-        <h2 className="text-xl font-semibold text-white">
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
           Placement Readiness
         </h2>
       </div>
 
-      <p className="mt-3 max-w-xl text-sm text-slate-400">
+      <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-400">
         {readinessMessage}
       </p>
     </div>
 
-    <div className="mx-auto flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-8 border-violet-500/30 bg-slate-950 sm:h-28 sm:w-28 lg:mx-0">
+    <div className="mx-auto flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-8 border-violet-200 bg-violet-50 shadow-sm dark:border-violet-500/30 dark:bg-slate-950 sm:h-28 sm:w-28 lg:mx-0">
       <div className="text-center">
-        <p className="text-3xl font-bold text-white">
+        <p className="text-3xl font-bold text-slate-900 dark:text-white">
           {placementReadiness}%
         </p>
 
-        <p className="text-xs text-slate-400">
+        <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
           Ready
         </p>
       </div>
     </div>
   </div>
 
-  <div className="mt-6 h-3 overflow-hidden rounded-full bg-slate-800">
+  <div className="mt-6 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
     <div
-      className="h-full rounded-full bg-violet-500 transition-all duration-500"
+      className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-all duration-500"
       style={{ width: `${placementReadiness}%` }}
     />
   </div>
 
- <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-    <div className="rounded-2xl bg-slate-950 p-5 min-h-[110px]">
-      <p className="text-sm text-slate-400">Career Goal</p>
-      <p className="mt-1 font-medium text-white">
+  <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="min-h-[110px] rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-white hover:shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900">
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        Career Goal
+      </p>
+
+      <p className="mt-2 break-words font-medium text-slate-900 dark:text-white">
         {profile.careerGoal}
       </p>
     </div>
 
-    <div className="rounded-2xl bg-slate-950 p-5 min-h-[110px]">
-      <p className="text-sm text-slate-400">Skills Completed</p>
-      <p className="mt-1 font-medium text-white">
+    <div className="min-h-[110px] rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-white hover:shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900">
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        Skills Completed
+      </p>
+
+      <p className="mt-2 font-medium text-slate-900 dark:text-white">
         {
           currentSkills.filter((skill) =>
             completedSkills.includes(skill)
@@ -1067,67 +1158,92 @@ Career Goal
       </p>
     </div>
 
-    <div className="rounded-2xl bg-slate-950 p-5 min-h-[110px]">
-      <p className="text-sm text-slate-400">Dream Company</p>
-      <p className="mt-1 font-medium text-white">
+    <div className="min-h-[110px] rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-white hover:shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900">
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        Dream Company
+      </p>
+
+      <p className="mt-2 break-words font-medium text-slate-900 dark:text-white">
         {profile.dreamCompany || "Not added"}
       </p>
     </div>
   </div>
 </div>
-    <div className="col-span-full mt-8 w-full space-y-6">
-  <h2 className="text-xl font-semibold text-white">
-    AI Recommendations
-  </h2>
+ <div className="col-span-full mt-8 w-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-slate-800 dark:bg-slate-900">
+  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h2 className="flex items-center gap-2 text-xl font-semibold text-slate-900 dark:text-white">
+        <Sparkles className="h-5 w-5 text-violet-500 dark:text-violet-400" />
+        AI Recommendations
+      </h2>
 
-  <div className="mt-5 space-y-3">
+      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Personalized guidance for your selected career path.
+      </p>
+    </div>
+
+    <span className="w-fit rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700 dark:bg-violet-500/10 dark:text-violet-300">
+      {recommendations.length} Suggestions
+    </span>
+  </div>
+
+  <div className="mt-5 grid gap-3 md:grid-cols-2">
     {recommendations.map((item) => (
       <div
         key={item}
-        className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-950 p-4"
+        className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-300 hover:bg-white hover:shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:border-violet-500/40 dark:hover:bg-slate-900"
       >
-        <Sparkles className="mt-0.5 h-5 w-5 text-violet-400" />
-        <p className="text-slate-300">{item}</p>
+        <div className="mt-0.5 rounded-lg bg-violet-100 p-2 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+          <Sparkles className="h-4 w-4" />
+        </div>
+
+        <p className="leading-6">{item}</p>
       </div>
     ))}
   </div>
-  <div className="mt-6">
-  <button
-    type="button"
-    onClick={generateAICareerPlan}
-    disabled={isGenerating}
-    className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-3 font-medium text-white transition hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-60"
-  >
-    <Sparkles className="h-5 w-5" />
 
-    {isGenerating
-      ? "Generating Career Plan..."
-      : "Generate AI Career Plan"}
-  </button>
+  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <button
+      type="button"
+      onClick={generateAICareerPlan}
+      disabled={isGenerating}
+      className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-500 px-5 py-3 font-medium text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+    >
+      <Sparkles className="h-5 w-5" />
+
+      {isGenerating
+        ? "Generating Career Plan..."
+        : "Generate AI Career Plan"}
+    </button>
+
+    {isGenerating && (
+      <p className="text-sm text-slate-500 dark:text-slate-400">
+        Creating a personalized roadmap based on your profile.
+      </p>
+    )}
+  </div>
 
   {careerPlanError && (
-    <p className="mt-3 text-sm text-red-400">
+    <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300">
       {careerPlanError}
-    </p>
+    </div>
   )}
- 
-</div>
 </div>
  {careerPlan && (
-<div className="col-span-full mt-8 w-full space-y-6">
-    <div className="rounded-2xl border border-violet-500/30 bg-violet-500/10 p-5">
-      <h3 className="text-lg font-semibold text-white">
+  <div className="col-span-full mt-8 w-full space-y-6">
+    <div className="rounded-3xl border border-violet-200 bg-violet-50 p-6 shadow-sm dark:border-violet-500/30 dark:bg-violet-500/10">
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
         Personalized Career Summary
       </h3>
 
-      <p className="mt-3 leading-7 text-slate-300">
+      <p className="mt-3 leading-7 text-slate-700 dark:text-slate-300">
         {careerPlan.summary}
       </p>
     </div>
 
     <div className="grid gap-6 xl:grid-cols-2">
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-        <h3 className="font-semibold text-white">
+      <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h3 className="font-semibold text-slate-900 dark:text-white">
           Skill Gaps
         </h3>
 
@@ -1135,17 +1251,17 @@ Career Goal
           {(careerPlan.skillGaps || []).map((skill) => (
             <div
               key={skill}
-              className="flex items-start gap-3 text-slate-300"
+              className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
-              <Circle className="mt-1 h-4 w-4 text-orange-400" />
+              <Circle className="mt-1 h-4 w-4 shrink-0 text-orange-500 dark:text-orange-400" />
               <span>{skill}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-        <h3 className="font-semibold text-white">
+      <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h3 className="font-semibold text-slate-900 dark:text-white">
           Next Steps
         </h3>
 
@@ -1153,9 +1269,9 @@ Career Goal
           {(careerPlan.nextSteps || []).map((step) => (
             <div
               key={step}
-              className="flex items-start gap-3 text-slate-300"
+              className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
-              <CheckCircle2 className="mt-1 h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
               <span>{step}</span>
             </div>
           ))}
@@ -1164,8 +1280,8 @@ Career Goal
     </div>
 
     <div className="grid gap-6 xl:grid-cols-2">
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-        <h3 className="font-semibold text-white">
+      <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h3 className="font-semibold text-slate-900 dark:text-white">
           Recommended Projects
         </h3>
 
@@ -1173,17 +1289,17 @@ Career Goal
           {(careerPlan.projects || []).map((project) => (
             <div
               key={project}
-              className="flex items-start gap-3 text-slate-300"
+              className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
-              <Laptop className="mt-1 h-4 w-4 text-blue-400" />
+              <Laptop className="mt-1 h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400" />
               <span>{project}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-        <h3 className="font-semibold text-white">
+      <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h3 className="font-semibold text-slate-900 dark:text-white">
           Certifications
         </h3>
 
@@ -1191,9 +1307,9 @@ Career Goal
           {(careerPlan.certifications || []).map((certificate) => (
             <div
               key={certificate}
-              className="flex items-start gap-3 text-slate-300"
+              className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
-              <Award className="mt-1 h-4 w-4 text-yellow-400" />
+              <Award className="mt-1 h-4 w-4 shrink-0 text-yellow-600 dark:text-yellow-400" />
               <span>{certificate}</span>
             </div>
           ))}
@@ -1201,8 +1317,8 @@ Career Goal
       </div>
     </div>
 
-    <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-      <h3 className="font-semibold text-white">
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <h3 className="font-semibold text-slate-900 dark:text-white">
         Internship Roles
       </h3>
 
@@ -1210,7 +1326,7 @@ Career Goal
         {(careerPlan.internshipRoles || []).map((role) => (
           <span
             key={role}
-            className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-300"
+            className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
           >
             {role}
           </span>
@@ -1218,8 +1334,8 @@ Career Goal
       </div>
     </div>
 
-    <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-      <h3 className="font-semibold text-white">
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <h3 className="font-semibold text-slate-900 dark:text-white">
         Weekly Career Plan
       </h3>
 
@@ -1227,13 +1343,13 @@ Career Goal
         {(careerPlan.weeklyPlan || []).map((week) => (
           <div
             key={`${week.week}-${week.focus}`}
-            className="rounded-xl border border-slate-800 bg-slate-900 p-4"
+            className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900"
           >
-            <p className="font-medium text-violet-400">
+            <p className="font-medium text-violet-700 dark:text-violet-400">
               {week.week}
             </p>
 
-            <p className="mt-2 text-sm text-slate-300">
+            <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">
               {week.focus}
             </p>
           </div>
@@ -1241,8 +1357,8 @@ Career Goal
       </div>
     </div>
 
-    <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-      <h3 className="font-semibold text-white">
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <h3 className="font-semibold text-slate-900 dark:text-white">
         Resume Improvement Tips
       </h3>
 
@@ -1250,9 +1366,9 @@ Career Goal
         {(careerPlan.resumeTips || []).map((tip) => (
           <div
             key={tip}
-            className="flex items-start gap-3 text-slate-300"
+            className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-slate-700 dark:bg-slate-900 dark:text-slate-300"
           >
-            <FileText className="mt-1 h-4 w-4 text-cyan-400" />
+            <FileText className="mt-1 h-4 w-4 shrink-0 text-cyan-600 dark:text-cyan-400" />
             <span>{tip}</span>
           </div>
         ))}

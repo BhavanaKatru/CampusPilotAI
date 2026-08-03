@@ -480,7 +480,7 @@ const overdueAssignments = assignments.filter((assignment) => {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-slate-950 p-5 text-white sm:p-7 lg:p-8">
+     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 text-slate-900 transition-all duration-300 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white p-5 sm:p-7 lg:p-8">
         <div className="flex flex-col gap-3 border-b border-white/10 pb-6">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-cyan-500/10 p-3 text-cyan-400">
@@ -488,12 +488,12 @@ const overdueAssignments = assignments.filter((assignment) => {
             </div>
 
             <div>
-              <h1 className="text-3xl font-bold">
+             <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
                 Assignment Assistant
               </h1>
    
 
-              <p className="mt-1 text-sm text-slate-400">
+              <p className="mt-1 text-sm text-slate-600 dark:text-slate-600 ">
                 Manage deadlines, priorities and assignment progress.
               </p>
             </div>
@@ -501,8 +501,8 @@ const overdueAssignments = assignments.filter((assignment) => {
         </div>
 
         <section className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <p className="text-sm text-slate-400">Total</p>
+          <div className="rounded-2xl  border border-slate-200 bg-white dark:border-white/10 dark:bg-white/5 p-5">
+            <p className="text-sm text-slate-600 dark:text-slate-400">Total</p>
             <p className="mt-2 text-3xl font-bold">{stats.total}</p>
           </div>
 
@@ -524,10 +524,10 @@ const overdueAssignments = assignments.filter((assignment) => {
           </div>
         </section>
         <section className="mt-7 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-    <h2 className="text-xl font-semibold">Assignment Calendar</h2>
+  <div className="rounded-2xlborder border-slate-200 bg-white dark:border-white/10 dark:bg-white/5p-5">
+    <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Assignment Calendar</h2>
 
-    <p className="mt-1 text-sm text-slate-400">
+    <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
       Select a date to view assignments due on that day.
     </p>
 
@@ -539,8 +539,8 @@ const overdueAssignments = assignments.filter((assignment) => {
     </div>
   </div>
 
-  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-    <h2 className="text-xl font-semibold">
+  <div className="rounded-2xl bborder border-slate-200 bg-white dark:border-white/10 dark:bg-white/5 p-5">
+    <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
       {selectedDate.toLocaleDateString(undefined, {
         day: "numeric",
         month: "long",
@@ -548,28 +548,28 @@ const overdueAssignments = assignments.filter((assignment) => {
       })}
     </h2>
 
-    <p className="mt-1 text-sm text-slate-400">
+    <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
       Assignments due on the selected date.
     </p>
 
     <div className="mt-5 space-y-3">
       {assignmentsForSelectedDate.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-slate-400">
+        <div className="rounded-xl border border-dashed border-slate-300 dark:border-white/10 p-8 text-center text-slate-600 dark:text-slate-400">
           No assignments due on this date.
         </div>
       ) : (
         assignmentsForSelectedDate.map((assignment) => (
           <div
             key={assignment._id}
-            className="rounded-xl border border-white/10 bg-slate-900/70 p-4"
+            className="rounded-xl border border-white/10 bg-white dark:bg-slate-900/70 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="font-semibold">
+               <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
                   {assignment.title}
                 </h3>
 
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                   {assignment.subject}
                 </p>
               </div>
@@ -592,10 +592,10 @@ const overdueAssignments = assignments.filter((assignment) => {
         <section className="mt-7 grid gap-6 xl:grid-cols-[0.9fr_1.4fr]">
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6"
+            className="rounded-2xl bborder border-slate-200 bg-white dark:border-white/10 dark:bg-white/5 p-5 sm:p-6"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                 {editingId ? "Edit Assignment" : "Add Assignment"}
               </h2>
 
@@ -603,7 +603,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="flex items-center gap-2 text-sm text-slate-400 hover:text-white"
+                  className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-white"
                 >
                   <XCircle size={17} />
                   Cancel
@@ -613,7 +613,7 @@ const overdueAssignments = assignments.filter((assignment) => {
 
             <div className="mt-6 space-y-4">
               <div>
-                <label className="text-sm text-slate-300">
+                <label className="text-sm text-slate-700 dark:text-slate-300">
                   Assignment Title
                 </label>
 
@@ -624,12 +624,12 @@ const overdueAssignments = assignments.filter((assignment) => {
                   onChange={handleChange}
                   required
                   placeholder="Example: DBMS Record"
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3 outline-none focus:border-cyan-500"
+                className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900/70 dark:text-white dark:placeholder:text-slate-500 dark:hover:border-white/20"
                 />
               </div>
 
               <div>
-                <label className="text-sm text-slate-300">
+                <label className="text-sm text-slate-700 dark:text-slate-300">
                   Subject
                 </label>
 
@@ -640,12 +640,11 @@ const overdueAssignments = assignments.filter((assignment) => {
                   onChange={handleChange}
                   required
                   placeholder="Example: DBMS"
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3 outline-none focus:border-cyan-500"
-                />
+                  className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900/70 dark:text-white dark:placeholder:text-slate-500 dark:hover:border-white/20"/>
               </div>
 
               <div>
-                <label className="text-sm text-slate-300">
+                <label className="text-sm text-slate-700 dark:text-slate-300">
                   Due Date
                 </label>
 
@@ -655,12 +654,11 @@ const overdueAssignments = assignments.filter((assignment) => {
                   value={formData.dueDate}
                   onChange={handleChange}
                   required
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3 outline-none focus:border-cyan-500"
-                />
+                  className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition hover:border-slate-400 focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900/70 dark:text-white dark:hover:border-white/20"  />
               </div>
 
               <div>
-                <label className="text-sm text-slate-300">
+                <label className="text-sm text-slate-700 dark:text-slate-300">
                   Priority
                 </label>
 
@@ -668,7 +666,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                   name="priority"
                   value={formData.priority}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 outline-none focus:border-cyan-500"
+                  className="mt-2 w-full rounded-xl border border-white/10 bg-white dark:bg-slate-900 px-4 py-3 outline-none focus:border-cyan-500"
                 >
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
@@ -701,7 +699,7 @@ const overdueAssignments = assignments.filter((assignment) => {
               </button>
 
               {message && (
-                <p className="rounded-xl border border-white/10 bg-slate-900/70 p-3 text-sm text-slate-300">
+                <p className="rounded-xl border border-white/10 bg-white dark:bg-slate-900/70 p-3 text-sm text-slate-700 dark:text-slate-300">
                   {message}
                 </p>
               )}
@@ -709,11 +707,11 @@ const overdueAssignments = assignments.filter((assignment) => {
 
 {aiPlan && (
   <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-4">
-    <h3 className="font-semibold text-violet-300">
+   <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
       AI Assignment Plan
     </h3>
 
-    <p className="mt-2 text-sm text-slate-300">
+    <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
       {aiPlan.overview}
     </p>
 
@@ -721,7 +719,7 @@ const overdueAssignments = assignments.filter((assignment) => {
       {aiPlan.milestones.map((milestone, index) => (
         <div
           key={`${milestone.day}-${index}`}
-          className="rounded-lg border border-white/10 bg-slate-900/70 p-3"
+          className="rounded-lg border border-white/10 bg-white dark:bg-slate-900/70 p-3"
         >
           <p className="text-sm font-semibold text-cyan-400">
             {milestone.day}
@@ -731,8 +729,8 @@ const overdueAssignments = assignments.filter((assignment) => {
   <p
     className={`text-sm ${
       milestone.completed
-        ? "line-through text-slate-500"
-        : "text-slate-300"
+        ? "line-through text-slate-600 dark:text-slate-500"
+        : "text-slate-700 dark:text-slate-300"
     }`}
   >
     {milestone.task}
@@ -750,15 +748,15 @@ const overdueAssignments = assignments.filter((assignment) => {
 
             </div>
           </form>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-slate-900/70 dark:hover:bg-slate-900"
+          <div >
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <h2 className="text-xl font-semibold">
+               <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                   Your Assignments
                 </h2>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-500">
                   Search, filter and update your academic tasks.
                 </p>
               </div>
@@ -766,7 +764,7 @@ const overdueAssignments = assignments.filter((assignment) => {
               <div className="relative">
                 <Search
                   size={17}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-600 dark:text-slate-500"
                 />
 
                 <input
@@ -776,7 +774,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                     setSearchTerm(event.target.value)
                   }
                   placeholder="Search assignments..."
-                  className="w-full rounded-xl border border-white/10 bg-slate-900/70 py-3 pl-10 pr-4 text-sm outline-none focus:border-cyan-500 lg:w-64"
+                  className="w-full rounded-xl border border-white/10 bg-white dark:bg-slate-900/70 py-3 pl-10 pr-4 text-sm outline-none focus:border-cyan-500 lg:w-64"
                 />
               </div>
             </div>
@@ -791,7 +789,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                     className={`rounded-lg px-4 py-2 text-sm transition ${
                       filter === item
                         ? "bg-cyan-500 text-slate-950"
-                        : "border border-white/10 bg-slate-900/70 text-slate-300 hover:bg-white/10"
+                        : "border border-white/10 bg-white dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10"
                     }`}
                   >
                     {item}
@@ -799,46 +797,54 @@ const overdueAssignments = assignments.filter((assignment) => {
                 )
               )}
             </div>
-            <div className="mb-6 flex flex-col gap-4 md:flex-row">
-  <input
-    type="text"
-    placeholder="Search assignments..."
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    className="flex-1 rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white"
-  />
+<div className="mb-6 mt-5 grid gap-4 md:grid-cols-[1fr_180px_180px]">
+  <div className="relative">
+    <Search
+      size={18}
+      className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+    />
+
+    <input
+      type="text"
+      placeholder="Search assignments..."
+      value={searchTerm}
+      onChange={(event) => setSearchTerm(event.target.value)}
+      className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
+    />
+  </div>
 
   <select
     value={filter}
-    onChange={(e) => setFilter(e.target.value)}
-    className="rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white"
+    onChange={(event) => setFilter(event.target.value)}
+    className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900 dark:text-white"
   >
-    <option>All</option>
-    <option>Pending</option>
-    <option>Completed</option>
-    <option>Overdue</option>
+    <option value="All">All</option>
+    <option value="Pending">Pending</option>
+    <option value="Completed">Completed</option>
+    <option value="Overdue">Overdue</option>
   </select>
+
   <select
-  value={sortBy}
-  onChange={(e) => setSortBy(e.target.value)}
-  className="rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white"
->
-  <option>Newest</option>
-  <option>Oldest</option>
-  <option>Due Date</option>
-  <option>Priority</option>
-</select>
+    value={sortBy}
+    onChange={(event) => setSortBy(event.target.value)}
+    className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-900 dark:text-white"
+  >
+    <option value="Newest">Newest</option>
+    <option value="Oldest">Oldest</option>
+    <option value="Due Date">Due Date</option>
+    <option value="Priority">Priority</option>
+  </select>
 </div>
 
             <div className="mt-6 space-y-4">
               {filteredAssignments.length === 0 ? (
-                <div className="rounded-xl border border-dashed border-white/10 p-10 text-center">
+                <div className="rounded-xl border border-dashed border-slate-300 dark:border-white/10 p-10 text-center">
                   <ClipboardList
                     size={40}
                     className="mx-auto text-slate-600"
                   />
 
-                  <p className="mt-3 text-slate-400">
+                  <p className="mt-3 text-slate-600 dark:text-slate-400">
                     No assignments found.
                   </p>
                 </div>
@@ -846,15 +852,15 @@ const overdueAssignments = assignments.filter((assignment) => {
                 sortedAssignments.map((assignment) => (
                   <div
                     key={assignment._id}
-                    className="rounded-2xl border border-white/10 bg-slate-900/70 p-5"
+                    className="rounded-2xl border border-white/10 bg-white dark:bg-slate-900/70 p-5"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <h3
                           className={`text-lg font-semibold ${
                             assignment.status === "Completed"
-                              ? "text-slate-500 line-through"
-                              : "text-white"
+                              ? "text-slate-600 dark:text-slate-500 line-through"
+                              : "text-slate-900 dark:text-white"
                           }`}
                         >
                           {assignment.title}
@@ -874,7 +880,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                         </h3>
 
             
-                        <p className="mt-1 text-sm text-slate-400">
+                        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                           {assignment.subject}
                         </p>
                       </div>
@@ -899,7 +905,7 @@ const overdueAssignments = assignments.filter((assignment) => {
                     </div>
 
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-  <p className="text-sm text-slate-400">
+  <p className="text-sm text-slate-600 dark:text-slate-400">
     Due:{" "}
     {new Date(assignment.dueDate).toLocaleDateString()}
   </p>
@@ -926,13 +932,13 @@ const overdueAssignments = assignments.filter((assignment) => {
       AI Assignment Plan
     </h4>
 
-    <p className="mt-2 text-sm text-slate-300">
+    <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
       {assignment.aiOverview}
     </p>{Array.isArray(assignment.milestones) &&
   assignment.milestones.length > 0 && (
     <div className="mt-4">
       <div className="flex items-center justify-between text-sm">
-        <span className="text-slate-400">
+        <span className="text-slate-600 dark:text-slate-400">
           Milestone Progress
         </span>
 
@@ -983,8 +989,8 @@ const overdueAssignments = assignments.filter((assignment) => {
       <p
         className={`mt-1 text-sm ${
           milestone.completed
-            ? "text-slate-500 line-through"
-            : "text-slate-300"
+            ? "text-slate-600 dark:text-slate-500 line-through"
+            : "text-slate-700 dark:text-slate-300"
         }`}
       >
         {milestone.task}
@@ -1002,7 +1008,7 @@ const overdueAssignments = assignments.filter((assignment) => {
       className={`rounded-lg p-2 transition ${
         milestone.completed
           ? "bg-emerald-500/20 text-emerald-400"
-          : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+          : "bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-700"
       }`}
       title={
         milestone.completed

@@ -53,7 +53,11 @@ export function AuthProvider({ children }) {
   };
 
   const loginWithGoogle = async () => {
-    const result = await signInWithPopup(auth, googleProvider);
+    const result = await signInWithPopup(
+      auth,
+      googleProvider
+    );
+
     return result.user;
   };
 
@@ -66,10 +70,13 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setAuthLoading(false);
-    });
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        setCurrentUser(user);
+        setAuthLoading(false);
+      }
+    );
 
     return unsubscribe;
   }, []);
@@ -95,7 +102,9 @@ export function useAuth() {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuth must be used inside AuthProvider");
+    throw new Error(
+      "useAuth must be used inside AuthProvider"
+    );
   }
 
   return context;

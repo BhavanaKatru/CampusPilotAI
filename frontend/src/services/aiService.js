@@ -23,6 +23,7 @@ async function handleResponse(response) {
 }
 
 export async function generateQuiz(
+  subject,
   topic,
   difficulty,
   questionCount = 5
@@ -33,6 +34,7 @@ export async function generateQuiz(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      subject,
       topic,
       difficulty,
       numberOfQuestions: questionCount,
@@ -47,17 +49,24 @@ export async function generateQuiz(
 
   return data.questions;
 }
-
 export async function askAI(message) {
-  const response = await fetch(`${API_URL}/api/chat`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      message,
-    }),
-  });
+  const response = await fetch(
+    `${API_URL}/api/chatbot/chat`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: [
+          {
+            sender: "user",
+            text: message,
+          },
+        ],
+      }),
+    }
+  );
 
   const data = await handleResponse(response);
 

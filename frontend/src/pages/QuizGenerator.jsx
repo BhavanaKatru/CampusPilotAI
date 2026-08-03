@@ -19,9 +19,10 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import { generateQuiz } from "../services/aiService";
 
 function QuizGenerator() {
-  const [topic, setTopic] = useState("");
-  const [difficulty, setDifficulty] = useState("Easy");
-  const [questionCount, setQuestionCount] = useState(5);
+const [subject, setSubject] = useState("");
+const [topic, setTopic] = useState("");
+const [difficulty, setDifficulty] = useState("Easy");
+const [questionCount, setQuestionCount] = useState(5);
 
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -105,23 +106,27 @@ function QuizGenerator() {
   };
 
   const handleGenerateQuiz = async () => {
-    if (!topic.trim()) {
-      setError("Please enter a quiz topic.");
-      return;
-    }
+if (!subject.trim()) {
+  setError("Please enter a subject.");
+  return;
+}
 
+if (!topic.trim()) {
+  setError("Please enter a quiz topic.");
+  return;
+}
     try {
       setLoading(true);
       setError("");
       setQuestions([]);
       setSelectedAnswers({});
       setSubmitted(false);
-
-      const quizData = await generateQuiz(
-        topic.trim(),
-        difficulty,
-        questionCount
-      );
+const quizData = await generateQuiz(
+  subject.trim(),
+  topic.trim(),
+  difficulty,
+  questionCount
+);
 
       const normalizedQuiz = normalizeQuestions(quizData);
 
@@ -339,7 +344,24 @@ localStorage.setItem(
           )}
 
           <section className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-slate-900 sm:p-8">
-            <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
+          <div>
+  <label
+    htmlFor="quiz-subject"
+    className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
+  >
+    Subject
+  </label>
+
+  <input
+    id="quiz-subject"
+    type="text"
+    value={subject}
+    onChange={(event) => setSubject(event.target.value)}
+    placeholder="Example: DBMS"
+    className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 dark:border-white/10 dark:bg-slate-950 dark:text-white"
+  />
+</div>
+           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               <div>
                 <label
                   htmlFor="quiz-topic"

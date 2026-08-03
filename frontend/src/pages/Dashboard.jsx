@@ -157,6 +157,23 @@ setDashboardStats((prev) => ({
     month: "long",
     year: "numeric",
   });
+  const formatTaskDate = (dateValue) => {
+  if (!dateValue) {
+    return "No due date";
+  }
+
+  const date = new Date(dateValue);
+
+  if (Number.isNaN(date.getTime())) {
+    return dateValue;
+  }
+
+  return date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+};
 
   const motivationalQuotes = [
     "Small progress every day creates big results.",
@@ -284,23 +301,22 @@ const totalWeeklyHours = weeklyProgress.reduce(
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-slate-950 p-5 text-white sm:p-7 lg:p-8">
-        <header className="relative flex flex-col gap-5 border-b border-white/10 pb-6 xl:flex-row xl:items-center xl:justify-between">
+<div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 p-5 text-slate-900 transition-colors duration-300 dark:bg-none dark:bg-slate-950 dark:text-white sm:p-7 lg:p-8">
+       <header className="relative flex flex-col gap-5 border-b border-slate-200 pb-6 dark:border-white/10 xl:flex-row xl:items-center xl:justify-between">
           <div>
             <p className="flex items-center gap-2 text-sm text-cyan-400">
               <Sparkles size={16} />
               {getGreeting()}
             </p>
 
-            <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-              Hello, {userName}
+         <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white sm:text-4xl">
             </h1>
 
-            <p className="mt-2 text-slate-400">
+           <p className="mt-2 text-slate-500 dark:text-slate-400">
               {formattedDate}
             </p>
 
-            <p className="mt-1 text-sm text-slate-500">
+           <p className="mt-1 text-sm text-slate-600 dark:text-slate-500">
               Track your progress and continue your learning journey.
             </p>
           </div>
@@ -317,7 +333,7 @@ const totalWeeklyHours = weeklyProgress.reduce(
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
                 placeholder="Search academic tools..."
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-11 pr-10 text-sm outline-none transition focus:border-cyan-500 md:w-64"
+              className="w-full rounded-xl border border-slate-200 bg-white py-3 pl-11 pr-10 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-cyan-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 md:w-64"
               />
 
               {searchTerm && (
@@ -432,7 +448,7 @@ const totalWeeklyHours = weeklyProgress.reduce(
 </section>
 
         <section className="mt-7 grid gap-6 xl:grid-cols-[1.6fr_1fr]">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 sm:p-6">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-semibold">
@@ -452,10 +468,10 @@ const totalWeeklyHours = weeklyProgress.reduce(
           <ProgressChart data={weeklyProgress} />
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+        <div className="w-full rounded-xl border border-slate-200 bg-slate-50 p-4 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:hover:border-cyan-500/30 dark:hover:bg-slate-900">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-semibold">
+                <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
                   Upcoming Tasks
                 </h2>
 
@@ -474,15 +490,15 @@ const totalWeeklyHours = weeklyProgress.reduce(
                     key={task.id}
                     type="button"
                     onClick={() => navigate("/assignments")}
-                    className="w-full rounded-xl border border-white/10 bg-slate-900/60 p-4 text-left transition hover:border-cyan-500/30 hover:bg-slate-900"
+                   className="w-full rounded-xl border border-slate-200 bg-slate-50 p-4 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:hover:border-cyan-500/30 dark:hover:bg-slate-900"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <h3 className="font-medium">
+                      <h3 className="font-semibold text-slate-900 dark:text-white">
                           {task.title}
                         </h3>
 
-                        <p className="mt-1 text-xs text-slate-500">
+                     <p className="mt-1 text-xs font-medium text-slate-600 dark:text-slate-400">
                          {task.subject || "General"}
                         </p>
                       </div>
@@ -494,11 +510,11 @@ const totalWeeklyHours = weeklyProgress.reduce(
                     </div>
 
                     <div className="mt-4 flex items-center justify-between">
-                      <span className="text-xs text-slate-400">
-                      {task.dueDate}
+                     <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                    {formatTaskDate(task.dueDate)}
                       </span>
 
-                      <span className="rounded-full bg-blue-500/10 px-2 py-1 text-xs text-blue-400">
+                    <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
                         {task.status}
                       </span>
                     </div>
@@ -553,8 +569,8 @@ const totalWeeklyHours = weeklyProgress.reduce(
           )}
         </section>
 
-        <section className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
-          <h2 className="text-xl font-semibold">
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5 sm:p-6">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
             Recent Activity
           </h2>
 
@@ -562,17 +578,17 @@ const totalWeeklyHours = weeklyProgress.reduce(
             {dashboardRecentActivities.map((activity) => (
               <div
                 key={activity.id}
-                className="rounded-xl border border-white/10 bg-slate-900/60 p-4 transition hover:border-cyan-500/20"
+          className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:hover:border-cyan-500/20"
               >
-                <h3 className="font-medium">
+               <h3 className="font-semibold text-slate-900 dark:text-white">
                   {activity.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                   {activity.description}
                 </p>
 
-                <p className="mt-4 text-xs text-slate-600">
+             <p className="mt-4 text-xs font-medium text-slate-500 dark:text-slate-500">
                   {activity.time}
                 </p>
               </div>
